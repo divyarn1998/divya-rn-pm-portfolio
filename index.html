@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya R N | Project Manager Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6a1b9a;--primary-light:#f3e5f5;--accent:#00695c;--dark:#1a1a2e;--bg:#f7f7fb;--card:#fff;--text:#2d2d3a;--lt:#6b6b80;--border:#e4e4ef}
+        body{font-family:'Inter',system-ui,sans-serif;color:var(--text);line-height:1.7;background:var(--bg)}
+        a{color:var(--primary);text-decoration:none}
+
+        nav{position:fixed;top:0;width:100%;background:rgba(26,26,46,.95);backdrop-filter:blur(12px);z-index:100;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:56px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+        nav .logo{font-weight:700;font-size:1.1rem;color:#fff}
+        nav ul{list-style:none;display:flex;gap:1.8rem}
+        nav ul a{color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;transition:color .3s;letter-spacing:.01em}
+        nav ul a:hover{color:#ce93d8}
+
+        .hero{padding:7rem 2rem 4rem;text-align:center;background:linear-gradient(160deg,#f3e5f5 0%,#fff 40%,#e0f2f1 100%);border-bottom:1px solid var(--border)}
+        .hero .profile-container{max-width:800px;margin:0 auto}
+        .hero .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 30px rgba(106,27,154,.2);margin-bottom:1.5rem}
+        .hero h1{font-size:2.4rem;font-weight:800;color:var(--dark);margin-bottom:.3rem;letter-spacing:-.02em}
+        .hero .role{font-size:1.15rem;color:var(--primary);font-weight:600;margin-bottom:.8rem}
+        .hero .bio{font-size:1rem;color:var(--lt);max-width:620px;margin:0 auto 1.5rem;line-height:1.8}
+        .hero .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .hero .contact-links a{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border-radius:8px;font-size:.85rem;font-weight:500;background:var(--bg);border:1px solid var(--border);color:var(--text);transition:all .2s}
+        .hero .contact-links a:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+
+        .stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:700px;margin:0 auto;padding:2rem 2rem 0;gap:1rem}
+        .stat{text-align:center;padding:1.2rem .5rem;background:var(--card);border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+        .stat .num{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#6a1b9a,#00695c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .stat .lbl{font-size:.78rem;color:var(--lt);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+
+        .section{padding:4rem 2rem;max-width:900px;margin:0 auto}
+        .section-alt{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .section-alt:nth-of-type(even){background:linear-gradient(180deg,#fff,#f3e5f5)}
+        .section-alt .section{max-width:900px;margin:0 auto}
+        .section-header{margin-bottom:2rem}
+        .section-header h2{font-size:1.5rem;font-weight:700;color:var(--dark);display:flex;align-items:center;gap:.6rem}
+        .section-header p{color:var(--lt);font-size:.9rem;margin-top:.3rem}
+
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+        .skill-group{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem}
+        .skill-group h3{font-size:.85rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem}
+        .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+        .tags span{background:var(--primary-light);color:var(--primary);padding:.25rem .65rem;border-radius:6px;font-size:.78rem;font-weight:500}
+
+        .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+        .ach-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:box-shadow .3s}
+        .ach-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+        .ach-card .ach-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#f3e5f5,#e0f2f1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.8rem}
+        .ach-card h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+        .ach-card p{font-size:.85rem;color:var(--lt);line-height:1.6}
+
+        .timeline{position:relative;padding-left:2.5rem}
+        .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--border)}
+        .tl-item{position:relative;margin-bottom:2.5rem}
+        .tl-item::before{content:'';position:absolute;left:-2.5rem;top:6px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#6a1b9a,#00695c);border:3px solid #fff;box-shadow:0 0 0 2px var(--primary-light)}
+        .tl-item .dates{font-size:.8rem;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+        .tl-item h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin:.2rem 0 .1rem}
+        .tl-item .company{color:var(--lt);font-size:.88rem;margin-bottom:.6rem}
+        .tl-item ul{padding-left:1.2rem}
+        .tl-item li{font-size:.88rem;color:var(--lt);margin-bottom:.25rem;line-height:1.6}
+
+        .tools-flex{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+        .tool{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.8rem 1.3rem;text-align:center;transition:all .2s;min-width:100px}
+        .tool:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+        .tool .ti{font-size:1.4rem;margin-bottom:.2rem}
+        .tool .tn{font-size:.8rem;font-weight:600;color:var(--dark)}
+
+        .edu-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
+        .edu-card h3{font-size:1.1rem;font-weight:700;color:var(--dark)}
+        .edu-card p{color:var(--lt);font-size:.9rem}
+        .cert-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
+        .cert{background:linear-gradient(135deg,#6a1b9a,#00695c);color:#fff;padding:.6rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:.4rem;box-shadow:0 3px 10px rgba(106,27,154,.25)}
+
+        .contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+        .contact-btns a{padding:.7rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s}
+        .btn-primary{background:linear-gradient(135deg,#6a1b9a,#00695c);color:#fff;box-shadow:0 4px 15px rgba(106,27,154,.3)}
+        .btn-primary:hover{background:linear-gradient(135deg,#4a148c,#004d40);box-shadow:0 6px 20px rgba(106,27,154,.4)}
+        .btn-secondary{background:var(--card);color:var(--primary);border:2px solid var(--primary)}
+        .btn-secondary:hover{background:var(--primary-light)}
+
+        footer{background:rgba(26,26,46,.95);text-align:center;padding:2rem;color:rgba(255,255,255,.7);font-size:.85rem}
+
+        @media(max-width:640px){
+            .hero h1{font-size:1.8rem}
+            .hero .avatar{width:140px;height:140px}
+            .stats{grid-template-columns:repeat(2,1fr)}
+            nav ul{gap:.8rem}
+            nav ul a{font-size:.78rem}
+            .section{padding:3rem 1.2rem}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Divya R N — PM</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<header class="hero" id="about">
+    <div class="profile-container">
+        <img src="DivyaRN.jpeg" alt="Divya R N" class="avatar">
+        <h1>Divya R N</h1>
+        <div class="role">Project Manager · Translations & Localization · Quality Operations</div>
+        <p class="bio">
+            Detail-oriented Project Coordinator with 5+ years of experience managing cross-functional workflows, 
+            vendor coordination, and quality deliverables in regulated technology environments. Passionate about 
+            driving operational excellence through meticulous project tracking, stakeholder communication, and 
+            compliance-focused quality assurance.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:mail2divyarn@gmail.com">📧 Email</a>
+            <a href="tel:+919980201493">📱 +91-9980201493</a>
+            <a href="#">📍 Bengaluru, India</a>
+            <a href="https://linkedin.com/in/divyarn">🔗 LinkedIn</a>
+        </div>
+    </div>
+</header>
+
+<div class="stats">
+    <div class="stat"><div class="num">5+</div><div class="lbl">Years Experience</div></div>
+    <div class="stat"><div class="num">13%</div><div class="lbl">Defect Reduction</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Roles Progressed</div></div>
+    <div class="stat"><div class="num">MCA</div><div class="lbl">Master's Degree</div></div>
+</div>
+
+<div id="skills" class="section-alt">
+    <div class="section">
+        <div class="section-header">
+            <h2>📋 Core Competencies</h2>
+            <p>Skills aligned with translations project management and quality operations</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <h3>Project Management</h3>
+                <div class="tags">
+                    <span>Timeline Management</span><span>Vendor Coordination</span><span>Budget Tracking</span><span>Deliverable Management</span><span>Risk Identification</span><span>Resource Planning</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Quality & Compliance</h3>
+                <div class="tags">
+                    <span>Quality Control</span><span>Proofreading</span><span>GCP Awareness</span><span>CAPA Investigations</span><span>Compliance Auditing</span><span>Process Adherence</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Documentation</h3>
+                <div class="tags">
+                    <span>SOPs</span><span>Process Flows</span><span>Quality Reports</span><span>Audit Documentation</span><span>Technical Specs</span><span>Traceability Matrices</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Stakeholder Management</h3>
+                <div class="tags">
+                    <span>Client Communication</span><span>Cross-Functional Teams</span><span>Vendor Management</span><span>CRO Coordination</span><span>Mentoring</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Tools & Platforms</h3>
+                <div class="tags">
+                    <span>JIRA</span><span>Confluence</span><span>MS Office Suite</span><span>SQL</span><span>Python</span><span>AWS</span><span>CI/CD</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Methodologies</h3>
+                <div class="tags">
+                    <span>Agile / Scrum</span><span>SDLC</span><span>Process Improvement</span><span>Root Cause Analysis</span><span>Risk-Based Approach</span><span>Sprint Planning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="achievements" class="section-alt">
+    <div class="section">
+        <div class="section-header">
+            <h2>🏆 Key Achievements</h2>
+            <p>Measurable impact through project coordination and quality excellence</p>
+        </div>
+        <div class="ach-grid">
+            <div class="ach-card">
+                <div class="ach-icon">📉</div>
+                <h3>13% Defect Reduction</h3>
+                <p>Drove measurable quality improvement through systematic root cause analysis and CAPA corrective actions across the organization.</p>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon">⚙️</div>
+                <h3>Workflow Automation Tool</h3>
+                <p>Built and deployed an internal tool that streamlined coordination workflows and notification systems, reducing manual effort significantly.</p>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon">📊</div>
+                <h3>Zero Missed Deadlines</h3>
+                <p>Successfully managed quality deliverables across multiple concurrent projects with consistent on-time delivery.</p>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon">✅</div>
+                <h3>COE Quality Audits</h3>
+                <p>Led Center of Excellence quality audits ensuring compliance with global standards and regulatory requirements.</p>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon">🎓</div>
+                <h3>Training & Mentorship</h3>
+                <p>Provided training and guidance to team members on quality processes, documentation standards, and project coordination best practices.</p>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon">🔄</div>
+                <h3>Process Improvement</h3>
+                <p>Proactively identified operational gaps and implemented process improvements that enhanced overall deliverable quality and efficiency.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="experience" class="section-alt">
+    <div class="section">
+        <div class="section-header">
+            <h2>💼 Experience</h2>
+            <p>Progressive career growth in project coordination and quality operations</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="dates">Oct 2024 – Present</div>
+                <h3>Senior Quality Associate – Project Coordination & QA</h3>
+                <div class="company">Amazon Development Center · Bengaluru</div>
+                <ul>
+                    <li>Coordinate with cross-functional teams and external vendors to manage project deliverables and ensure timely execution</li>
+                    <li>Manage project timelines and track milestones across multiple concurrent workstreams</li>
+                    <li>Perform quality control checks on deliverables, validating accuracy and compliance with specifications</li>
+                    <li>Conduct proofreading and detailed review of technical documentation for linguistic accuracy</li>
+                    <li>Drive process improvement initiatives and implement corrective actions</li>
+                    <li>Develop and maintain audit-ready documentation including project plans and quality reports</li>
+                    <li>Mentor junior team members on quality processes and project coordination</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <div class="dates">Jun 2022 – Oct 2024</div>
+                <h3>Senior Quality Associate – COE Auditor</h3>
+                <div class="company">Amazon Development Center · Bengaluru</div>
+                <ul>
+                    <li>Led COE quality audits reviewing deliverables for compliance and providing risk-based feedback</li>
+                    <li>Conducted root cause analysis and drove CAPA corrective actions reducing defects by 13%</li>
+                    <li>Managed documentation workflows including SOPs and compliance records</li>
+                    <li>Prepared quality metrics and reporting dashboards for stakeholder visibility</li>
+                    <li>Supported training programs to uplift quality practices organization-wide</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <div class="dates">Jan 2021 – Jun 2022</div>
+                <h3>Device Associate I – Quality Tester</h3>
+                <div class="company">Amazon Development Center · Bengaluru</div>
+                <ul>
+                    <li>Managed end-to-end quality validation workflows across multiple platforms</li>
+                    <li>Performed detailed proofreading and validation of content and documentation</li>
+                    <li>Coordinated test execution and defect resolution timelines across teams</li>
+                    <li>Supported submission and compliance activities with validation documentation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tools" class="section-alt">
+    <div class="section">
+        <div class="section-header">
+            <h2>🛠️ Tools & Technologies</h2>
+            <p>My everyday toolkit for project management and quality operations</p>
+        </div>
+        <div class="tools-flex">
+            <div class="tool"><div class="ti">📋</div><div class="tn">JIRA</div></div>
+            <div class="tool"><div class="ti">📝</div><div class="tn">Confluence</div></div>
+            <div class="tool"><div class="ti">📊</div><div class="tn">MS Excel</div></div>
+            <div class="tool"><div class="ti">🗄️</div><div class="tn">SQL</div></div>
+            <div class="tool"><div class="ti">🐍</div><div class="tn">Python</div></div>
+            <div class="tool"><div class="ti">☁️</div><div class="tn">AWS</div></div>
+            <div class="tool"><div class="ti">🔄</div><div class="tn">CI/CD</div></div>
+            <div class="tool"><div class="ti">💬</div><div class="tn">Slack</div></div>
+            <div class="tool"><div class="ti">📑</div><div class="tn">MS Word</div></div>
+            <div class="tool"><div class="ti">📈</div><div class="tn">Dashboards</div></div>
+        </div>
+
+        <div class="section-header" style="margin-top:3rem">
+            <h2>🎓 Education & Certifications</h2>
+        </div>
+        <div class="edu-card">
+            <h3>Master of Computer Application (MCA)</h3>
+            <p>AMC Engineering College, Bengaluru · 2020</p>
+        </div>
+        <div class="cert-flex">
+            <div class="cert">🏅 Program Management</div>
+            <div class="cert">🏅 Python</div>
+            <div class="cert">🏅 Selenium</div>
+            <div class="cert">🏅 Automation Testing</div>
+        </div>
+    </div>
+</div>
+
+<div id="contact" class="section-alt">
+    <div class="section" style="text-align:center">
+        <div class="section-header" style="text-align:center">
+            <h2 style="justify-content:center">📬 Get In Touch</h2>
+            <p>Open to Project Management opportunities in clinical research & translations</p>
+        </div>
+        <div class="contact-btns">
+            <a href="mailto:mail2divyarn@gmail.com" class="btn-primary">📧 Email Me</a>
+            <a href="tel:+919980201493" class="btn-secondary">📱 Call Me</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Divya R N · Project Manager Portfolio</p>
+</footer>
+
+</body>
+</html>
